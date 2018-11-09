@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller as BaseController;
+
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ProductController extends BaseController
 {
     public function __construct()
     {
@@ -17,6 +19,12 @@ class ProductController extends Controller
     {
         $products = $this->product->browse();
         return view('product.index', $products);
+    }
+
+    public function detail($id)
+    {
+        $product = $this->product->find($id);
+        return view('product.detail', $product);
     }
 
     public function new()

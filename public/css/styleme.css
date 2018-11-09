@@ -1,0 +1,311 @@
+body {
+  border: 1px solid #80bfff;
+}
+
+.clear {
+  float: none;
+  clear: both;
+}
+
+/*gradien warna*/
+.banner{
+  margin: 0;
+  padding: 0;
+  font-family: "montserrat";
+  background-image: linear-gradient(10deg, #2c3e50,#ffffff,#2980b9,#ffffff,#8e44ad);
+  background-size: 400% 400%;
+  animation: bganimation 15s infinite;
+}
+.text{
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 350px 0;
+  font-size: 22px;
+}
+
+@keyframes bganimation {
+  0%{
+    background-position: 0% 50%;
+  }
+  50%{
+    background-position: 100% 50%;
+  }
+  100%{
+    background-position: 0% 50%;
+  }
+}
+/*gradien warna*/
+
+ul.nav > .navbar-nav > li > a:hover {
+  background-color: #ffffff;
+}
+
+img.logoSO {
+  float: left; 
+  margin-top:-5px; 
+  margin-right: 5px;
+  border-radius: 20px; 
+  width: 30px;  
+  height: 30px;
+}
+
+.form-search{
+  float: right; 
+  margin-top: 7px;
+  margin-right: 100px;
+}
+
+.in-search{
+  float: left;
+  padding: 5px 10px;
+  border: 0.5px solid #80bfff;
+  outline: none;
+  border-radius: 10px 0px 0px 10px;
+}
+.btn-search{
+  float: left;
+  padding: 5px;
+  width: 40px;
+  background: #80bfff;
+  color: #ffffff;
+  border: 0.5px solid #80bfff;
+  border-radius: 0px 10px 10px 0px;
+}  
+
+a.btn-belanja{
+  border: 0.5px solid #ffffff; 
+  padding: 20px 30px; 
+  color: #ffffff; 
+  background-color: rgba(0,0,0,0.4);
+}
+
+a.btn-belanja:hover{
+  border: 0.5px solid #ffffff;
+  color: #ffffff; 
+  background-color: rgba(0,0,0,0.7);
+}
+
+/*list kategori*/
+.list-kat a {
+  color: #000000;
+  padding: 10px;
+  font-size: 14px;
+}
+.list-kat a:hover {
+  color: #ff6600;
+  background: #ffffff;
+  padding: 10px 110px 10px 15px;
+}
+.list-kat hr {
+  margin-top: 5px
+}
+/*list kategori*/
+
+.bar-action {
+  padding: 5px 20px; 
+  background-color: #e6e6e6;
+}
+
+.bar-action h6 {
+  float: left; 
+  margin-right: 20px;
+}
+
+.bar-action a{
+  padding: 5px 15px; 
+  margin: 5px; 
+  float: left; 
+  background-color: #ffffff; 
+  color: #000;
+}
+
+.bar-action a:hover {
+  border: 1px solid #66b3ff;
+  color: #66b3ff;
+}
+
+.dropdown-harga{
+  background-color: #ffffff; 
+  color: #000; 
+  outline: none; 
+  height: 31px; 
+  padding: 0px 15px 0px 5px; 
+  margin: 5px; 
+  float: left;
+}
+
+.dropdown-harga:hover{
+  border: 1px solid #66b3ff;
+  color: #66b3ff;
+}
+
+/*list produk---------------------------------------------------*/
+.produk-content {
+  width: 80%; 
+  float: right;
+}
+
+.panel-produk {
+  float: left; 
+  color: #000;
+  margin: 10px; 
+  border: 1px solid #cccccc; 
+  background-color: #ffffff; 
+  width: 210px;
+}
+
+.panel-produk:hover {
+  border: 1px solid #ff6600; 
+  color: #000;
+  background-color: #ffffff; 
+}
+
+
+.panel-img img {
+  border: 0.5px solid #cccccc;
+  height: 230px; 
+  width: 100%;
+}
+
+.body-panel-produk {
+  font-size: 15px; 
+  margin: 10px;
+}
+
+.p-produk {
+  height: 45px;
+}
+
+.p-harga {
+  color: #e60000
+}
+
+.text-star {
+  font-size: 12px; 
+  float:right; 
+  margin: 3.5px
+}
+/*list produk---------------------------------------------------*/
+
+
+/*view produk---------------------------------------------------*/
+.bg-detail {
+  padding: 20px; 
+  background-color: #ffffff; 
+  margin: 20px;
+}
+
+.detail-gambar {
+  margin: 0px 20px; 
+  width: 40%;
+  float: left;
+}
+
+img.gambar-utama {
+  border: 1px solid #cccccc; 
+  width: 100%; 
+  height: 100%
+}
+
+.gambar-kecil {
+  height: 110px; 
+  padding: 10px
+}
+
+.gambar-kecil img {
+  margin: 0px 10px; 
+  width: 20%; 
+  height: 100%; 
+  float: left;
+}
+
+.gambar-kecil img:hover {
+  border: 1px solid #cccccc;
+}
+
+.text-star2 {
+  font-size: 12px; 
+  float:right; 
+  margin: 2.5px
+}
+
+.form-action-produk{
+  float: left; 
+  margin: 0px 10px; 
+  padding: 0px 10px;
+  width: 50%;
+}
+
+.form-action-produk h4{
+  font-weight: bolder;
+}
+
+.bar-harga {
+  background-color: #f2f2f2; 
+  color: #ff6600; 
+  margin: 10px 0px; 
+  padding: 1px 15px;
+}
+
+.actgroup {
+  margin-top: 20px;
+}
+
+.actgroup .radio{
+  float: left; 
+  margin: 0px 10px
+}
+
+.btnGroup {
+  font-size: 18; 
+  float: left; 
+  margin: 10px 40px;
+}
+
+.btJum {
+  height: 27px; 
+  background-color: #ffffff; 
+  color: #8c8c8c; 
+  border: 0.5px solid #cccccc;
+}
+
+.inJum {
+  height: 27px; 
+  border: 0.5px solid #cccccc; 
+  width: 40px; 
+  text-align: center; 
+  margin: 0px -4px;
+}
+
+.btnCart {
+  border: 1px solid #ff6600; 
+  background-color: #ffffff; 
+  color: #ff6600; 
+  font-size: 15px; 
+  padding: 10px 18px;
+}
+
+.btnCart:hover {
+  background-color: #f2f2f2;
+}
+
+.btnBuy {
+  border: 1px solid #80bfff; 
+  padding: 12px 18px;
+  font-size: 15px;
+}
+
+.btnBuy:hover {
+  background-color: #f2f2f2;
+  color: #80bfff;
+}
+
+/*view produk---------------------------------------------------*/
+
+
+/*view KERANJANG---------------------------------------------------*/
+
+
+
+/*view KERANJANG---------------------------------------------------*/

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller as BaseController;
+
 use Illuminate\Http\Request;
 
-class StockController extends Controller
+class StockController extends BaseController
 {
     public function __construct()
     {

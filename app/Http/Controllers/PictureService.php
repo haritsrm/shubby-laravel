@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Picture;
+use App\Picture;
 use Illuminate\Http\Request;
 
 class PictureService extends Controller

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller as BaseController;
+
 use Illuminate\Http\Request;
 
-class PictureController extends Controller
+class PictureController extends BaseController
 {
     public function __construct()
     {

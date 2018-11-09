@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Cart;
+use App\Cart;
 use Illuminate\Http\Request;
 
 class CartService extends Controller

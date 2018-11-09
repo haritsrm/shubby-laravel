@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+use App\Http\Controllers\Controller as BaseController;
+
+class CategoryController extends BaseController
 {
     public function __construct()
     {

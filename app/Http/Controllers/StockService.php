@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Stock;
+use App\Stock;
 use Illuminate\Http\Request;
 
 class StockService extends Controller

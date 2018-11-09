@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Order;
+use App\Order;
 use Illuminate\Http\Request;
 
 class OrderService extends Controller

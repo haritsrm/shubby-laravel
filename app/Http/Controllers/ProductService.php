@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Product;
+use App\Product;
 use Illuminate\Http\Request;
 
 class ProductService extends Controller
