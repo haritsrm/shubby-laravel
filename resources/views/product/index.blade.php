@@ -29,14 +29,18 @@
 
 			<div class="clear"></div>
 		</div>
-		@for($i=0; $i<=7; $i++)
-		<a href="/detail products" class="panel-produk">
+		@foreach($products as $product)
+		<a href="/product/{{ $product->id }}" class="panel-produk">
 			<div class="panel-img">
+				@if(App\Picture::find($product->id))
+				<img src="{{ base64_decode(App\Picture::find($product->id)) }}" alt="">
+				@else
 				<img src="assets/images/1.jpg" alt="">
+				@endif
 			</div>
 			<div class="body-panel-produk">
-				<p class="p-produk">Decorative Rack rak Shabby chic rak Shabby...  </p>
-				<p class="p-harga">Rp. 20.000</p>
+				<p class="p-produk">{{ $product->name }} </p>
+				<p class="p-harga">{{ $product->price }}</p>
 				<div style="float: right;">
 					<div class="text-nowrap" style="float:left;">
 						<i class="icon-star-full2 text-size-base text-warning-300"></i>
@@ -49,7 +53,7 @@
 				</div>
 			</div>
 		</a>
-		@endfor
+		@endforeach
 	</div>
 	<div class="clear"></div>
 </div>

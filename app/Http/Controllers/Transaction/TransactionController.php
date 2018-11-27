@@ -1,12 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Transaction;
 
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller as BaseController;
 
 use Illuminate\Http\Request;
+
+use App\Http\Controllers\TransactionService;
+
+use App\Http\Controllers\OrderService;
 
 class TransactionController extends BaseController
 {

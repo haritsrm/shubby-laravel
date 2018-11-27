@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller as BaseController;
+
+use App\Http\Controllers\StockService;
 
 use Illuminate\Http\Request;
 

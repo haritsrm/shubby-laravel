@@ -8,25 +8,39 @@
 
 		<!-- Global stylesheets -->
 		<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
-		<link href="assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
-		<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
-		<link href="assets/css/core.css" rel="stylesheet" type="text/css">
-		<link href="assets/css/components.css" rel="stylesheet" type="text/css">
-		<link href="assets/css/colors.css" rel="stylesheet" type="text/css">
+		<link href="/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+		<link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+		<link href="/assets/css/core.css" rel="stylesheet" type="text/css">
+		<link href="/assets/css/components.css" rel="stylesheet" type="text/css">
+		<link href="/assets/css/colors.css" rel="stylesheet" type="text/css">
 		<!-- /global stylesheets -->
-		<link rel="stylesheet" type="text/css" href="css/styleme.css">
+		<link rel="stylesheet" type="text/css" href="/css/styleme.css">
 
 		<!-- Core JS files -->
-		<script type="text/javascript" src="assets/js/plugins/loaders/pace.min.js"></script>
-		<script type="text/javascript" src="assets/js/core/libraries/jquery.min.js"></script>
-		<script type="text/javascript" src="assets/js/core/libraries/bootstrap.min.js"></script>
-		<script type="text/javascript" src="assets/js/plugins/loaders/blockui.min.js"></script>
+		<script type="text/javascript" src="/assets/js/plugins/loaders/pace.min.js"></script>
+		<script type="text/javascript" src="/assets/js/core/libraries/jquery.min.js"></script>
+		<script type="text/javascript" src="/assets/js/core/libraries/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/assets/js/plugins/loaders/blockui.min.js"></script>
 		<!-- /core JS files -->
 
 		<!-- Theme JS files -->
-		<script type="text/javascript" src="assets/js/plugins/ui/prism.min.js"></script>
-		<script type="text/javascript" src="assets/js/core/app.js"></script>
+		<script type="text/javascript" src="/assets/js/plugins/ui/prism.min.js"></script>
+		<script type="text/javascript" src="/assets/js/core/app.js"></script>
 		<!-- /theme JS files -->
+
+		<!-- Theme JS files -->
+		<script type="text/javascript" src="/assets/js/core/libraries/jquery_ui/interactions.min.js"></script>
+		<script type="text/javascript" src="/assets/js/plugins/forms/selects/select2.min.js"></script>
+		<script type="text/javascript" src="/assets/js/pages/form_select2.js"></script>
+		<!-- /theme JS files -->
+
+		<!-- Theme JS files -->
+		<script type="text/javascript" src="/assets/js/plugins/uploaders/fileinput/plugins/purify.min.js"></script>
+		<script type="text/javascript" src="/assets/js/plugins/uploaders/fileinput/plugins/sortable.min.js"></script>
+		<script type="text/javascript" src="/assets/js/plugins/uploaders/fileinput/fileinput.min.js"></script>
+		<script type="text/javascript" src="/assets/js/pages/uploader_bootstrap.js"></script>
+		<!-- /theme JS files -->
+
 		<script>
 			function btKurang() {
 				n = 0;
@@ -63,16 +77,8 @@
 			<ul class="nav navbar-nav">
 				<li><a href="/" class="text-info">Beranda</a></li>
 				<li><a href="/products" class="text-info">Belanja</a></li>
-				<li><a href="#" class="text-info">Panduan</a></li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle text-info" data-toggle="dropdown">Pembelian <span class="caret"></span></a>
-					<ul class="dropdown-menu dropdown-menu-right">
-						<li><a href="#" class="text-info">Action</a></li>
-						<li><a href="#" class="text-info">Another action</a></li>
-						<li><a href="#" class="text-info">Something else here</a></li>
-						<li><a href="#" class="text-info">One more line</a></li>
-					</ul>
-				</li>
+				<li><a href="" class="text-info">Panduan</a></li>
+				<li> <a href="/belanjaanku" class="text-info">Belanjaanku</a></li>
 				<li><a href="#" class="text-info">Kontak</a></li>
 			</ul>
 
@@ -81,21 +87,39 @@
 					<form class="form-search">
 						<input type="text" name="q" class="in-search" placeholder="Search here..">	
 						<button type="submit" style="outline: none; " class="btn-search"><i class="glyphicon glyphicon-search"></i></button>
+						<div class="clear"></div>
 					</form>
 				</li>
 				@guest
-				<li><a href="/cart">
+				<li>
+					<a href="/cart">
 						<i class="icon-cart text-info"></i>
-						<span class="visible-xs-inline-block position-right">Keranjang</span>
+						<span class="visible-xs-inline-block position-right text-info">Keranjang</span>
 						<span class="badge bg-warning-400">2</span>
 					</a>
 				</li>
 				<li><a href="/login" class="text-info">Login</a></li>
 				@else
-				<li><a href="" class="text-info">username</a></li>
-				<li><a href="/acart">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle text-info" data-toggle="dropdown">{{ Auth::user()->name }}</a>
+					<ul class="dropdown-menu dropdown-menu-right">
+						<li><a href="#" class="text-info">Profile</a></li>
+						<li>
+							<a class="text-info" href="{{ route('logout') }}"
+								onclick="event.preventDefault();
+												document.getElementById('logout-form').submit();">
+								{{ __('Logout') }}
+							</a>
+
+							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+								@csrf
+							</form>
+						</li>
+					</ul>
+				</li>
+				<li><a href="/cart">
 						<i class="icon-cart text-info"></i>
-						<span class="visible-xs-inline-block position-right">Keranjang</span>
+						<span class="visible-xs-inline-block position-right text-info">Keranjang</span>
 						<span class="badge bg-warning-400">2</span>
 					</a>
 				</li>
@@ -109,10 +133,8 @@
 	@yield('content')
 	<!-- content -->
 
-	<footer style="background-color: #ffffff; border: 1px solid #80bfff; color: #80bfff; padding: 15px 0px">
-		<div class="container" style="padding-top: 10px">
-			<p>Copyright &copy; 2018 Granada projects.</p>
-		</div>
+	<footer>
+		<p>Copyright &copy; 2018 Granada projects.</p>
 	</footer>
 
 	</body>

@@ -52,6 +52,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'no_tlp' => 'required'
         ]);
     }
 
@@ -67,7 +68,12 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'token' => str_rand(15),
+            'no_rekening' => 'xxxxxx-xxxxxxx-xxxxxxx',
+            'no_tlp' => $data['no_tlp'],
+            'address_1'=> 'Provinsi, Kabupaten, Kecamatan',
+            'address_2'=> 'Alamat lengkap',
+            'zipcode' => 'xxxxx',
+            'token' => str_random(15)
         ]);
     }
 }

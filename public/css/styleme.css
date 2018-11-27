@@ -2,9 +2,21 @@ body {
   border: 1px solid #80bfff;
 }
 
+footer{
+  background-color: #ffffff; 
+  text-align: center; 
+  border: 1px solid #80bfff; 
+  color: #80bfff; 
+  padding: 15px 0px;
+}
+
 .clear {
   float: none;
   clear: both;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 /*gradien warna*/
@@ -305,7 +317,148 @@ img.gambar-utama {
 
 
 /*view KERANJANG---------------------------------------------------*/
+.detail-cart img {
+  width: 100px; 
+  height: 100px; 
+  float: left; 
+  margin-right: 10px;
+}
 
+.footer-cart {
+  border-top: 1px solid #80bfff; 
+  width: 100%; 
+  position: fixed; 
+  bottom: 0; 
+  background-color: #ffffff; 
+  margin: 0px 0px; 
+  border-radius: 3px; 
+  padding: 20px;
+}
 
+.footer-cart h6{
+  float: left;
+  margin: 18px 5px;
+}
 
+.footer-cart h2{
+  float: left;
+  margin: 10px; 
+  font-weight: bold; 
+  color: #ff6600
+}
+
+.footer-cart button{
+  float: left; 
+  border: 1px solid #ff6600; 
+  background-color: #ffffff; 
+  color: #ff6600; 
+  font-size: 16px; 
+  margin: 5px 10px 0px 10px;
+  padding: 10px 50px;
+}
+
+.delivery-option{
+  border: 1px solid #cccccc; 
+  background-color: #ffffff;
+}
+
+.head-del-option{
+  border-bottom: 1px solid #cccccc;
+  padding: 0px 15px;
+}
+
+h6.metode-p {
+  float: left; 
+  width: 200px; 
+  margin: 15px 0px;
+}
+
+h6.trf-bank {
+  float: left; 
+  border: 1px solid #ff6600; 
+  color: #ff6600; 
+  padding: 5px 10px;
+}
+
+.body-del-option{
+  padding: 10px 15px;
+}
+
+.body-del-option h6 {
+  width: 200px; 
+  float: left;
+}
+
+.foot-pesanan {
+  background-color: #fffefb; 
+  border-top: 1px solid #cccccc;
+}
+
+.left-pesanan {
+  float: left; 
+  padding: 0px 20px; 
+  width: 60%;
+}
+
+.right-pesanan {
+  color: #808080; 
+  float: left; 
+  padding: 0px 20px; 
+  width:40%;
+}
+
+.btn-buat-pesanan {
+  border: 1px solid #ff6600; 
+  color: #ff6600; 
+  background-color: #ffffff; 
+  padding: 10px 50px; 
+  margin: 10px 0px;
+}
 /*view KERANJANG---------------------------------------------------*/
+
+
+/*view INFO PEMABAYARAN---------------------------------------------------*/
+.pembayaran{
+  width: 60%;
+}
+
+@media only screen and (max-width: 780px) {
+  .pembayaran{
+    width: 100%;
+  }
+}
+
+.bullet-detail {
+  float: left; 
+  margin-right: 5px; 
+  width: 21px;
+  height: 21px; 
+  background-color: #b3b3b3; 
+  color: #ffffff; 
+  text-align: center; 
+  border-radius: 100%;
+}
+
+.btn-upload-bukti1{
+  background-color: #80bfff;
+  border: 1px solid #fcfcfc;
+  color: #fcfcfc; 
+  text-align: center;
+  padding: 5px;
+  font-size: 16px; 
+  border-radius: 5px; 
+  margin: 5px 0px;
+}
+
+.btn-upload-bukti2{
+  border: 1px solid #80bfff; 
+  text-align: center;
+  padding: 5px;
+  font-size: 16px; 
+  border-radius: 5px; 
+  margin: 5px 0px;
+}
+
+.pop-up {
+  font-size: 14px; color: orangered
+}

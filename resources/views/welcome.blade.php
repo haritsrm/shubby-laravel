@@ -1,96 +1,16 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.layout')
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+@section('content')
+<div class="banner" style="top: -20px; margin-bottom: -20px; position: relative; height: 550px;">
+	<img src="/assets/images/img3.png" style="width:160px;height: 200px; margin-top: 250px;margin-right: 130px; float: right;">
+  	<img src="/assets/images/img1.png" style="width:160px;height: 200px; margin-top: 350px;margin-right: -200px; float: right;">
+  	<img src="/assets/images/img2.png" style="width:160px;height: 200px; margin-top: 200px; margin-right: -220px; float: right;">
+  	<img src="/assets/images/img4.png" style="width:160px;height: 200px; margin-top: 330px; margin-right: -50px; float: right;">
+  	<img src="/assets/images/img5.png" style="width:130px;height: 200px; margin-top: 370px; margin-right: -10px; float: right;">
+  	<div class="carousel-caption" style="top: 170px; font-size: 20px">
+      	<img src="/assets/images/shabby.png" style="width: 350px; height: 80px; margin-bottom: 20px;">
+    	<p>Belanja Alat Kebutuhan Rumah Tangga Unik Hanya disini</p><br>
+    	<a href="/products" class="btn-belanja">Belanja Sekarang</a>
+  	</div>   
+</div>
+@endsection

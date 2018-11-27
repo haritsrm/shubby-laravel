@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Product;
 
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller as BaseController;
+
+use App\Http\Controllers\RatingService;
 
 use Illuminate\Http\Request;
 

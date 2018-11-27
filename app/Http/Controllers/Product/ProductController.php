@@ -1,8 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller as BaseController;
+
+use App\Http\Controllers\ProductService;
+
+use App\Http\Controllers\PictureService;
+
+use App\Http\Controllers\StockService;
+
+use App\Http\Controllers\OrderService;
 
 use Illuminate\Http\Request;
 
@@ -13,18 +21,39 @@ class ProductController extends BaseController
         $this->product = new ProductService;
         $this->picture = new PictureService;
         $this->stock   = new StockService;
+        $this->order   = new OrderService;
     }
 
     public function index()
     {
         $products = $this->product->browse();
-        return view('product.index', $products);
+        return view('product.index')->with('products', $products);
     }
+
+    // public function latest()
+    // {
+    //     $products = $this->product->browse()->orderBy('created_at', 'asc');
+    //     return view('product.index')->with('products', $products);
+    // }
+
+    // public function bestSelling()
+    // {
+    //     $products = [];
+    //     $orders = $this->order->select('id_product', DB::raw('count(*) as total'))
+    //                 ->groupBy('id_product')
+    //                 ->orderBy('id_product', 'desc')
+    //                 ->get();
+    //     foreach($orders as $order){
+    //         array_push($this->product->find($order->id_product));
+    //     }
+
+    //     return view('product.index')->with('products', $products);
+    // }
 
     public function detail($id)
     {
         $product = $this->product->find($id);
-        return view('product.detail', $product);
+        return view('product.detail')->with('product', $product);
     }
 
     public function new()

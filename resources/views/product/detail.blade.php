@@ -5,12 +5,11 @@
 	<div class="bg-detail">
 		<!-- foto detail produk -->
 		<div class="detail-gambar">
-			<img src="assets/images/gambar1.jpg" class="gambar-utama">
+			<img src="/assets/images/gambar1.jpg" class="gambar-utama">
 			<div class="gambar-kecil">
-				<img src="assets/images/gambar1.jpg">
-				<img src="assets/images/1.jpg">
-				<img src="assets/images/1.jpg">
-				<img src="assets/images/1.jpg">
+				@foreach((App\Picture::where('id_product', '=', $product->id)) as $picture)
+				<img src="{{ base64_decode(App\Picture::find($product->id)) }}">
+				@endforeach
 				<div class="clear"></div>
 			</div>
 		</div>
@@ -18,7 +17,7 @@
 
 		<!-- form action produk -->
 		<div class="form-action-produk">
-			<h4>SWEATER SUPREME VM Sweater Cardigan Polos Rajut ZIpper Hoodie Long Knitt Abu Muda X7O6Z</h4>
+			<h4>{{ $product->name }}</h4>
 			<div style="float: right;">
 				<p style="margin-bottom: -5px">Penilaian produk</p>
 				<div class="text-nowrap" style="float:left;">
@@ -32,7 +31,7 @@
 			</div>
 			<div class="clear"></div>
 			<div class="bar-harga">
-				<h4 style="font-weight: bold;">Rp. 148.000</h4>
+				<h4 style="font-weight: bold;">Rp. {{ $product->price }}</h4>
 			</div>
 
 			<div class="actgroup">
@@ -67,7 +66,8 @@
 					<button type="button" onclick="btKurang()" class="btJum"><i class="icon-minus3"></i></button>
 					<input type="text" autocomplete="off" id="jumlah" class="inJum" value="1" name="jum">
 					<button type="button" onclick="btTambah()" class="btJum"><i class="icon-plus3"></i></button>
-					<p class="text-muted">Tersisa 20 buah</p>
+					{{! $stock = App\Stock::where('id_product', $product->id)->first() }}
+					<p class="text-muted">Tersisa {{ $stock->stock }} buah</p>
 				</div>
 			</div>
 

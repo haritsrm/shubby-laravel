@@ -11,6 +11,11 @@ class TransactionService extends Controller
         return new Transaction;
     }
 
+    public function browse()
+    {
+        return $this->newTransaction()->all();
+    }
+
     public function find($id)
     {
         return $this->newTransaction()->find($id);

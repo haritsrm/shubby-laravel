@@ -27,3 +27,9 @@ Route::prefix('admin')->group(function() {
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/home', 'AdminController@index')->name('admin.home');
 });
+
+Route::get('/cart', 'Cart\CartController@index')->name('cart');
+Route::get('/checkout', 'Order\OrderController@index')->name('order');
+Route::get('/pembayaran', 'Order\OrderController@pembayaran')->name('pembayaran');
+Route::get('/transaction', 'Transaction\TransactionController@index')->name('transaction');
+Route::get('/belanjaanku', 'Belanjaan\BelanjaanController@index')->name('belanjaanku');
