@@ -9,10 +9,9 @@
 			<h6><b>Berdasarkan Kategori</b></h6>
 		</div>
 		<div class="list-kat">
-			<a href="" class="text-info">Kategori 1</a><hr>
-			<a href="" class="text-info">Kategori 2</a><hr>
-			<a href="" class="text-info">Kategori 3</a><hr>
-			<a href="" class="text-info">Kategori 4</a><hr>
+			@foreach($categories as $category)
+			<a href="" class="text-info">{{ $category->name }}</a><hr>
+			@endforeach
 		</div>
 	</div>
 
@@ -33,7 +32,7 @@
 		<a href="/product/{{ $product->id }}" class="panel-produk">
 			<div class="panel-img">
 				@if(App\Picture::find($product->id))
-				<img src="{{ base64_decode(App\Picture::find($product->id)) }}" alt="">
+				<img src="data:image/jpeg;charset=utf-8;base64, {{ App\Picture::where('id_product', $product->id)->first()->picture }}" alt="">
 				@else
 				<img src="assets/images/1.jpg" alt="">
 				@endif

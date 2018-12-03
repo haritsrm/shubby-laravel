@@ -41,27 +41,16 @@
 		<script type="text/javascript" src="/assets/js/pages/uploader_bootstrap.js"></script>
 		<!-- /theme JS files -->
 
-		<script>
-			function btKurang() {
-				n = 0;
-				n1 = eval(document.getElementById('jumlah').value);
-				if (n1>1) {
-					n = n1-1;
-					document.getElementById('jumlah').value = n;
-				}
-			}
-			function btTambah() {
-				n = 0;
-				n1 = eval(document.getElementById('jumlah').value);
-				n = n1+1;
-				document.getElementById('jumlah').value = n;
-			}
-		</script>
+		<!-- sweet_alert -->
+		<link rel="stylesheet" href="/assets/sweetalert2/sweetalert2.min.css">
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 	</head>
 
 	<body>	
+	@include('sweet::alert')
 	<!-- Default navbar -->
-	<div class="navbar navbar-default navbar-component" style="border-bottom: 1px solid #80bfff; padding: 15px">
+	<div class="navbar navbar-default navbar-component" style="padding: 15px">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="">
 				<img src="assets/images/logo.jpg" class="logoSO" alt="">
@@ -92,7 +81,7 @@
 				</li>
 				@guest
 				<li>
-					<a href="/cart">
+					<a href="/carts">
 						<i class="icon-cart text-info"></i>
 						<span class="visible-xs-inline-block position-right text-info">Keranjang</span>
 						<span class="badge bg-warning-400">2</span>
@@ -117,10 +106,11 @@
 						</li>
 					</ul>
 				</li>
-				<li><a href="/cart">
+				<li><a href="/carts">
 						<i class="icon-cart text-info"></i>
 						<span class="visible-xs-inline-block position-right text-info">Keranjang</span>
-						<span class="badge bg-warning-400">2</span>
+						{{! $carts = App\Cart::all()->where('id_user', Auth::user()->id) }}
+						<span class="badge bg-warning-400">{{ count($carts) }}</span>
 					</a>
 				</li>
 				@endguest
@@ -133,9 +123,48 @@
 	@yield('content')
 	<!-- content -->
 
-	<footer>
-		<p>Copyright &copy; 2018 Granada projects.</p>
-	</footer>
 
+	<footer>
+		<div class="center-footer">
+			<div class="foot-element capitalize">
+				<h6>shabby organizer</h6>
+				<ul>
+					<li><a href="">bantuan</a></li><br>
+					<li><a href="">syarat & ketentuan</a></li><br>
+					<li><a href="">tentang kami</a></li><br>
+				</ul>
+			</div>
+
+			<div class="foot-element capitalize" >
+				<h6>layanan pelanggan</h6>
+				<ul>
+					<li><a href="">panduan</a></li><br>
+					<li><a href="">pembayaran</a></li><br>
+					<li><a href="">Lacak Pesanan Pembeli</a></li><br>
+					<li><a href="">hubungi kami</a></li><br>
+				</ul>
+			</div>
+			
+			<div style="padding-top: 40px; float:right">
+				<div style="margin-left: 30px; float: left;">
+					<img src="assets/images/logo_dark.png" alt="" style="float: left;width:220px; height:35px">
+				</div>
+
+				<div class="foot-element capitalize" style="margin-top: -10px; margin-left: 30px">
+					<h6>Temukan kami di:</h6>
+					<ul>
+						<li><a href=""><img src="/assets/images/brands/facebook.png" style="border-radius: 100%; width: 30px;height: 30px; margin: 2px"></a></li>
+						<li><a href=""><img src="/assets/images/brands/twitter.png" style="border-radius: 100%; width: 30px;height: 30px; margin: 2px"></a></li>
+						<li><a href=""><img src="/assets/images/brands/insta.png" style="border-radius: 100%; width: 30px;height: 30px; margin: 2px"></a></li>
+						<li><a href=""><img src="/assets/images/brands/whatsapp.png" style="border-radius: 100%; width: 30px;height: 30px; margin: 2px"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div style="border-top:1px solid #cccccc; padding: 20px; text-align: center;">
+			<p>Copyright &copy; 2018 Granada projects.</p>
+		</div>
+	</footer>
 	</body>
 </html>

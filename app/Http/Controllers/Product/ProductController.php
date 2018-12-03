@@ -12,7 +12,11 @@ use App\Http\Controllers\StockService;
 
 use App\Http\Controllers\OrderService;
 
+use App\Http\Controllers\CategoryService;
+
 use Illuminate\Http\Request;
+
+use Alert;
 
 class ProductController extends BaseController
 {
@@ -22,12 +26,21 @@ class ProductController extends BaseController
         $this->picture = new PictureService;
         $this->stock   = new StockService;
         $this->order   = new OrderService;
+        $this->category   = new CategoryService;
     }
 
     public function index()
     {
         $products = $this->product->browse();
-        return view('product.index')->with('products', $products);
+        $categories = $this->category->browse();
+        return view('product.index')->with('products', $products)
+                                    ->with('categories', $categories);
+    }
+
+    public function indexadmin()
+    {
+        $products = $this->product->browse();
+        return view('views_admin.barang_tabel')->with('products', $products);
     }
 
     // public function latest()
@@ -58,7 +71,8 @@ class ProductController extends BaseController
 
     public function new()
     {
-        return view('product.new');
+        $categories = $this->category->browse();
+        return view('views_admin.barang_tambah')->with('categories', $categories);
     }
 
     public function create(Request $req)
@@ -70,11 +84,21 @@ class ProductController extends BaseController
             'description' => $req->description,
             'price' => $req->price,
         ]);
-        foreach ($pict as $p)
+        if (is_array($pict) || is_object($pict))
+        {
+            foreach ($pict as $p)
+            {
+                $this->picture->create([
+                    'id_product' => $product->id,
+                    'picture' => base64_encode(file_get_contents($p)),
+                ]);
+            }
+        }
+        else
         {
             $this->picture->create([
                 'id_product' => $product->id,
-                'picture' => base64_encode($p),
+                'picture' => base64_encode(file_get_contents($pict)),
             ]);
         }
         $this->stock->create([
@@ -82,7 +106,8 @@ class ProductController extends BaseController
             'stock' => $req->stock,
         ]);
 
-        return redirect('products');
+        Alert::success('Menambahkan '.$product->name.' pada daftar', 'Berhasil');
+        return redirect()->back();
     }
 
     public function edit()
@@ -109,7 +134,7 @@ class ProductController extends BaseController
     {
         $product = $this->product->find($id);
         $product->delete();
-
-        return redirect('products');
+        Alert::success('Menghapus '.$product->name.' dari daftar!', 'Berhasil');
+        return redirect()->back();
     }
 }

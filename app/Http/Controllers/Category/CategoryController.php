@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller as BaseController;
 
 use App\Http\Controllers\CategoryService;
 
+use Alert;
+
 class CategoryController extends BaseController
 {
     public function __construct()
@@ -18,12 +20,7 @@ class CategoryController extends BaseController
     public function index()
     {
         $categories = $this->category->browse();
-        return view('category.index', $categories);
-    }
-
-    public function new()
-    {
-        return view('category.new');
+        return view('views_admin.kategori_tabel')->with('categories', $categories);
     }
 
     public function create(Request $req)
@@ -32,13 +29,8 @@ class CategoryController extends BaseController
             'name' => $req->name,
         ]);
 
-        return redirect('categories');
-    }
-
-    public function edit()
-    {
-        $category = $this->category->find($id);
-        return view('category.edit', $category);
+        Alert::success('Menambahkan kategori baru!', 'Berhasil');
+        return redirect()->back();
     }
 
     public function update(Request $req, $id)
@@ -47,8 +39,9 @@ class CategoryController extends BaseController
         $category->update([
             'name' => $req->name,
         ]);
-
-        return redirect('categories');
+        
+        Alert::success('merubah kategori!', 'Berhasil');
+        return redirect()->back();
     }
 
     public function delete($id)
@@ -56,6 +49,7 @@ class CategoryController extends BaseController
         $category = $this->category->find($id);
         $category->delete();
 
-        return redirect('categories');
+        Alert::success('Menghapus '.$category->name.' dari daftar!', 'Berhasil');
+        return redirect()->back();
     }
 }

@@ -59,7 +59,7 @@
 			</div>
 			<div style="padding: 0px 15px; border:1px solid #f2f2f2">
 				<h6 style="float: left;">Metode Transfer </h6>
-				<select name="metode" style="float: right; width: 70.5%; border:none; margin-top: 11px">
+				<select name="metode" style="float: right; width: 70.5%; background: #ffffff; border:none; margin-top: 11px">
 					<option selected disabled hidden>Pilih Metode</option>
 					<option>Transfer ATM</option>
 					<option>iBanking</option>

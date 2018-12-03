@@ -16,76 +16,97 @@
 		<!-- foto detail produk -->
 
 		<!-- form action produk -->
-		<div class="form-action-produk">
-			<h4>{{ $product->name }}</h4>
-			<div style="float: right;">
-				<p style="margin-bottom: -5px">Penilaian produk</p>
-				<div class="text-nowrap" style="float:left;">
-					<i class="icon-star-full2 text-size-base text-warning-300"></i>
-					<i class="icon-star-full2 text-size-base text-warning-300"></i>
-					<i class="icon-star-full2 text-size-base text-warning-300"></i>
-					<i class="icon-star-full2 text-size-base text-warning-300"></i>
-					<i class="icon-star-full2 text-size-base text-warning-300"></i>
-					<p class="text-muted text-star2">(30)</p>
+		<form action="/cart" method="post">
+			@csrf
+			<div class="form-action-produk">
+				<h4>{{ $product->name }}</h4>
+				<div style="float: right;">
+					<p style="margin-bottom: -5px">Penilaian produk</p>
+					<div class="text-nowrap" style="float:left;">
+						<i class="icon-star-full2 text-size-base text-warning-300"></i>
+						<i class="icon-star-full2 text-size-base text-warning-300"></i>
+						<i class="icon-star-full2 text-size-base text-warning-300"></i>
+						<i class="icon-star-full2 text-size-base text-warning-300"></i>
+						<i class="icon-star-full2 text-size-base text-warning-300"></i>
+						<p class="text-muted text-star2">(30)</p>
+					</div>
+				</div>
+				<div class="clear"></div>
+				<div class="bar-harga">
+					<h4 style="font-weight: bold;">Rp. {{ $product->price }}</h4>
+				</div>
+
+				<div class="actgroup">
+					<h6 class="text-muted">Pilihan warna :</h6>
+					@for($i=1;$i<=3;$i++)
+					<div class="radio">
+						<label>
+							<input type="radio" name="warna" class="styled">
+							Warna&nbsp;{{$i}}
+						</label>
+					</div>
+					@endfor
+				</div>
+				<div class="clear"></div>
+			
+				<div class="actgroup">
+					<h6 class="text-muted">Ukuran :</h6>
+					@for($i=1;$i<=3;$i++)
+					<div class="radio">
+						<label>
+							<input type="radio" name="ukuran" class="styled">
+							Ukuran&nbsp;{{$i}}
+						</label>
+					</div>
+					@endfor
+				</div>
+				<div class="clear"></div>
+
+				<div style="margin-top: 20px;">
+					<h6 class="text-muted" style="float: left;">Kuantitas : </h6>
+					<div class="btnGroup">
+						<button type="button" onclick="btKurang()" class="btJum"><i class="icon-minus3"></i></button>
+						<input type="text" autocomplete="off" id="jumlah" class="inJum" value="1" name="quantity">
+						<button type="button" onclick="btTambah()" class="btJum"><i class="icon-plus3"></i></button>
+						{{! $stock = App\Stock::where('id_product', $product->id)->first() }}
+						<p class="text-muted">Tersisa {{ $stock->stock }} buah</p>
+					</div>
+					<script>
+						function btKurang() {
+							n = 0;
+							n1 = eval(document.getElementById('jumlah').value);
+							if (n1>1) {
+								n = n1-1;
+								document.getElementById('jumlah').value = n;
+							}
+						}
+						function btTambah() {
+							n = 0;
+							n2 = parseInt({{ $stock->stock }});
+							n1 = eval(document.getElementById('jumlah').value);
+							if ( n1 < n2 )
+							{
+								n = n1+1;
+								document.getElementById('jumlah').value = n;
+							}
+						}
+					</script>
+				</div>
+
+				<input type="hidden" name="product" value="{{ $product->id }}">
+
+				<div class="clear"></div>
+				<button type="submit" class="btnCart"><i class="icon-cart-add" style="font-size: 18px"></i> Masukkan Keranjang</button>
+
+				<a href="" class="btnBuy">Beli Sekarang</a>
+
+				<hr>
+				<div style="">
+					<h6 class="text-muted">Deskripsi Produk : </h6>
+					<p>{{ $product->description }}</p>
 				</div>
 			</div>
-			<div class="clear"></div>
-			<div class="bar-harga">
-				<h4 style="font-weight: bold;">Rp. {{ $product->price }}</h4>
-			</div>
-
-			<div class="actgroup">
-				<h6 class="text-muted">Pilihan warna :</h6>
-				@for($i=1;$i<=3;$i++)
-				<div class="radio">
-					<label>
-						<input type="radio" name="warna" class="styled">
-						Warna&nbsp;{{$i}}
-					</label>
-				</div>
-				@endfor
-			</div>
-			<div class="clear"></div>
-		
-			<div class="actgroup">
-				<h6 class="text-muted">Ukuran :</h6>
-				@for($i=1;$i<=3;$i++)
-				<div class="radio">
-					<label>
-						<input type="radio" name="ukuran" class="styled">
-						Ukuran&nbsp;{{$i}}
-					</label>
-				</div>
-				@endfor
-			</div>
-			<div class="clear"></div>
-
-			<div style="margin-top: 20px;">
-				<h6 class="text-muted" style="float: left;">Kuantitas : </h6>
-				<div class="btnGroup">
-					<button type="button" onclick="btKurang()" class="btJum"><i class="icon-minus3"></i></button>
-					<input type="text" autocomplete="off" id="jumlah" class="inJum" value="1" name="jum">
-					<button type="button" onclick="btTambah()" class="btJum"><i class="icon-plus3"></i></button>
-					{{! $stock = App\Stock::where('id_product', $product->id)->first() }}
-					<p class="text-muted">Tersisa {{ $stock->stock }} buah</p>
-				</div>
-			</div>
-
-			<div class="clear"></div>
-			<button type="submit" class="btnCart"><i class="icon-cart-add" style="font-size: 18px"></i> Masukkan Keranjang</button>
-
-			<a href="" class="btnBuy">Beli Sekarang</a>
-
-			<hr>
-			<div style="">
-				<h6 class="text-muted">Deskripsi Produk : </h6>
-				<p>Kotak serbaguna bentuk laci, terdiri dari 3 susun ( 5 laci ). Bisa dipakai untuk tempat menyimpan pakaian dalam seperti bra atau celana dalam, pakaian bayi.</p>
-				<p>Juga bisa dipakai untuk tempat pernak pernak aksesoris, kosmetik atau pernak pernik rumah. Sangat cocok untuk menyimpan barang-barang kecil agar tersimpan rapi dan mudah dicari saat dibutuhkan.</p>
-				<p>Bukanya dengan ditarik keluar seperti membuka laci.</p>
-				<p>Bahan cukup tebal, dalamnya terjahit lapisan karton tebal, bisa berdiri kokoh.</p>
-				<p>Material : Kain kanvas + lapisan karton tebal</p>
-			</div>
-		</div>
+		</form>
 		<!-- deskripsi produk -->
 		<div class="clear"></div>
 
